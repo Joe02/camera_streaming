@@ -1,6 +1,8 @@
+import 'package:camera_streaming/src/pages/login_screen.dart';
+import 'package:camera_streaming/src/stores/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import './src/pages/index.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +16,13 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.purple,
         primarySwatch: Colors.purple,
       ),
-      home: IndexPage(),
+      home: MultiProvider(
+          providers: [
+            Provider<Controller>(
+              create: (_) => Controller()
+            )
+          ],
+          child: LoginScreen()),
     );
   }
 }
